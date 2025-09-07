@@ -11,7 +11,9 @@ Dito isto, o presente projeto tem como objetivo mostar um pouco do estilo Realis
 paginasBrasileiras/
 │
 ├── index.html         # Página inicial (apresentação do site e do Realismo)
-└── timeline.html      # Página da Linha do Tempo interativa
+├── timeline.html      # Página da Linha do Tempo interativa
+├── style.css
+└── script.js        
 ```
 ## Funcionalidades
 - Mostrar um pequeno resumo sobre o movimento realista brasileiro;
