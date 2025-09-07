@@ -72,7 +72,13 @@ const mapToHtml = (fn) => (arr) => arr.map(fn);
 const makeToggleHandler = (createDetailNode) => { ... return () => { ... } };
 ```
 ## Contribuição
-
+| Aluno | Matrícula | Contribuição |
+|-------| --------- | ------------ |
+| Ruth de Fátima da Costa Silva | 2222906 | Código |
+| Maria de Fátima dos Santos Mourão | 2323870 | Código |
+| Thaís Sousa da Silva | 2319193 | Testes |
+| Júlio Costa Moraes Neto | 2327091 | Documentação |
+| Francisco Willame de Oliveira Silva | 2326290 | Documentação |
 
 
 
