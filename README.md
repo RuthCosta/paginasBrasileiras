@@ -6,6 +6,13 @@ Dito isto, o presente projeto tem como objetivo mostar um pouco do estilo Realis
 
 [![status do projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-green)](https://github.com/seu-usuario/seu-projeto)
 
+## Estrutura do Projeto
+```bash
+paginasBrasileiras/
+│
+├── index.html         # Página inicial (apresentação do site e do Realismo)
+└── timeline.html      # Página da Linha do Tempo interativa
+```
 ## Funcionalidades
 - Mostrar um pequeno resumo sobre o movimento realista brasileiro;
 - Mostrar algumas características do Realismo-Naturalismo no Brasil;
