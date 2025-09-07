@@ -3,21 +3,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Linha do Tempo - Brasil em Páginas</title>
-    <style>
-        body{margin:0;padding:0;font-family:system-ui,sans-serif;background:#f7f7f9}
-        header{background:#0b6ea8;color:#fff;padding:24px;text-align:center}
-        header h1{margin:0;font-size:2rem}
-        .timeline{max-width:900px;margin:32px auto;padding:0 12px}
-        .item{background:#fff;margin:12px 0;padding:14px 16px;border-radius:10px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 12px rgba(0,0,0,.04)}
-        .dates{min-width:140px;font-weight:600;color:#445}
-        .author{cursor:pointer;position:relative;padding:6px 12px;border-radius:8px}
-        .author:hover{background:rgba(11,110,168,0.07)}
-        .popover{position:absolute;left:100%;top:50%;transform:translate(12px,-50%);min-width:320px;background:#fff;border-radius:10px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);z-index:40;display:none}
-        .popover h4{margin:0 0 8px;font-size:1rem}
-        .work{margin-bottom:10px}
-        .work b{display:block}
-        .toggle{background:#0b6ea8;color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header>
@@ -30,48 +16,7 @@
     </section>
 </main>
 
+<script src="script.js"></script>
 
-<script>
-    const AUTHORS = Object.freeze([
-    {name:'Machado de Assis',birth:1839,death:1908,bio:'O maior nome do Realismo brasileiro e da literatura nacional. Sua obra é caracterizada por uma profunda análise psicológica dos personagens, ironia fina, pessimismo e um estilo narrativo inovador, cheio de digressões e interlocução com o leitor.',works:[{title:'Memórias Póstumas de Brás Cubas',year:1881,summary:'Marco inicial do Realismo no Brasil; sátira da elite carioca narrada por um defunto.'},{title:'Quincas Borba',year:1891,summary:'Crítica à filosofia do "Humanitismo"; explora loucura, ambição e herança.'},{title:'Dom Casmurro',year:1899,summary:'Romance psicológico centrado na dúvida sobre a fidelidade de Capitu.'},{title:'Esaú e Jacó',year:1904,summary:'Parte da sequência final da produção realista de Machado.'},{title:'Memorial de Aires',year:1908,summary:'Fecho da sua produção, com tom reflexivo e melancólico.'}]},
-    {name:'Aluísio Azevedo',birth:1857,death:1913,bio:'Principal representante do Naturalismo no Brasil. Sua obra é focada na influência do meio (social, hereditário e racial) na determinação do comportamento humano, often com temas mais pesados como miséria, adultério, crimes e patologias sociais.',works:[{title:'O Mulato',year:1881,summary:'Denúncia do preconceito racial no Maranhão.'},{title:'Casa de Pensão',year:1884,summary:'Crítica à exploração e vida nos subúrbios cariocas.'},{title:'O Cortiço',year:1890,summary:'Obra-prima naturalista: o cortiço como organismo social que determina destinos.'}]},
-    {name:'Raul Pompeia',birth:1863,death:1895,bio:'Um autor que transitou entre o Realismo e o Naturalismo, conhecido por seu estilo impressionista e psicológico.',works:[{title:'O Ateneu',year:1888,summary:'Crítica à instituição escolar: corrupção, violência e hipocrisia na elite.'}]},
-    {name:'Visconde de Taunay',birth:1843,death:1899,bio:'Apesar de ser mais conhecido por seu trabalho romântico (como A Retirada da Laguna), ele também produziu uma obra de grande valor realista.',works:[{title:'Inocência',year:1872,summary:'Transição ao Realismo: descrição documental do sertão, costumes e linguagem.'}]}]);
-
-
-    const mapToHtml = (fn) => (arr) => arr.map(fn);
-    const formatDates = a => `${a.birth} — ${a.death}`;
-    const listComprehension = (arr, mapFn, filterFn = () => true) => arr.filter(filterFn).map(mapFn);
-    const makeHoverHandler = (works) => (ev) => { const pop = ev.currentTarget.querySelector('.popover'); if(pop) pop.style.display='block'; };
-    const makeLeaveHandler = (works) => (ev) => { const pop = ev.currentTarget.querySelector('.popover'); if(pop) pop.style.display='none'; };
-    const createElement = (tag, attrs={}, children=[]) => { const el=document.createElement(tag); Object.entries(attrs).forEach(([k,v])=>{ if(k==='class')el.className=v; else if(k==='html')el.innerHTML=v; else if(k==='text')el.textContent=v; else el.setAttribute(k,v); }); (Array.isArray(children)?children:[children]).forEach(c=>c&&el.appendChild(c)); return el; };
-    const workToNode = w => { const div=createElement('div',{class:'work'}); div.appendChild(createElement('b',{text:`${w.title} (${w.year})`})); div.appendChild(createElement('small',{text:w.summary})); return div; };
-    const authorToNode = author => {
-    const item=createElement('div',{class:'item'});
-    const left=createElement('div',{style:'display:flex;align-items:center;gap:12px;'});
-    const dates=createElement('div',{class:'dates',text:formatDates(author)});
-    const authorLabel=createElement('div',{class:'author',tabindex:0});
-    authorLabel.appendChild(createElement('div',{html:`<strong>${author.name}</strong><div style="font-size:.9rem;color:#556">${author.bio}</div>`}));
-    const pop=createElement('div',{class:'popover'});
-    pop.appendChild(createElement('h4',{text:'Principais obras (estilo realista)'}));
-    listComprehension(author.works,w=>workToNode(w)).forEach(n=>pop.appendChild(n));
-    authorLabel.appendChild(pop);
-    authorLabel.addEventListener('mouseenter', makeHoverHandler(author.works));
-    authorLabel.addEventListener('mouseleave', makeLeaveHandler(author.works));
-    authorLabel.addEventListener('focus', makeHoverHandler(author.works));
-    authorLabel.addEventListener('blur', makeLeaveHandler(author.works));
-    left.appendChild(dates);
-    left.appendChild(authorLabel);
-    const toggleBtn=createElement('button',{class:'toggle',text:'Detalhes'});
-    const makeToggleHandler = (createDetailNode) => { let open=false; return () => { open=!open; if(open){ const detail=createDetailNode(); toggleBtn.textContent='Fechar'; toggleBtn._detail=detail; item.appendChild(detail); } else { toggleBtn.textContent='Detalhes'; if(toggleBtn._detail)item.removeChild(toggleBtn._detail); toggleBtn._detail=null; } }; };
-    const createDetailNode = () => { const d=createElement('div',{style:'margin-top:12px;padding:12px;border-top:1px solid #eef;border-radius:8px;background:#fbfdff;'}); d.appendChild(createElement('div',{html:`<strong>${author.name} — ${author.birth}–${author.death}</strong>`})); d.appendChild(createElement('p',{text:author.bio})); const worksList=createElement('div'); mapToHtml(workToNode)(author.works).forEach(n=>worksList.appendChild(n)); d.appendChild(worksList); return d; };
-    toggleBtn.addEventListener('click', makeToggleHandler(createDetailNode));
-    item.appendChild(left);
-    item.appendChild(toggleBtn);
-    return item;
-    };
-    const container=document.querySelector('.timeline');
-    AUTHORS.slice().sort((a,b)=>a.birth-b.birth).map(authorToNode).forEach(n=>container.appendChild(n));
-</script>
 </body>
 </html>
