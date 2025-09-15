@@ -1,7 +1,7 @@
 # Páginas Brasileiras
 Embora muitas vezes subestimada, a literatura brasileira é riquíssima. Possuindo obras de grande impacto social, cultural e científico, com grandes pensadores de renome como José de Alencar, Machado de Assis, Lima Barreto, Manuel Bandeira, Clarisse Lispecto, Ariano Suassuna, dentre outros autores que marcaram gerações em suas épocas e estilos literários. Desta forma, nossa literatura merece reconhecimento e destaque.
 
-Diante disto, modelamos um projeto que tem como objetivo mostar um pouco do estilo Realista e Naturalista brasileiro, movimento surgido em 1881 com o objetivo de expor e denunciar injustiças na sociedade da época. Criamos um site chamado “Páginas Brasileiras”, onde o usuário irá ter acesso a um breve resumo sobre o Realismo clássico no Brasil, suas características, autores e principais obras.
+Diante disto, criamos um projeto que tem como objetivo mostar um pouco do estilo Realista e Naturalista brasileiro, movimento surgido em 1881 com o objetivo de expor e denunciar injustiças na sociedade da época. Criamos um site chamado “Páginas Brasileiras”, onde o usuário irá ter acesso a um breve resumo sobre o Realismo clássico no Brasil, suas características, autores e principais obras.
 
 [![status do projeto](https://img.shields.io/badge/Status-Em%20Desenvolvimento-green)](https://github.com/seu-usuario/seu-projeto)
 
