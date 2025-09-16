@@ -20,9 +20,7 @@ paginasBrasileiras/
 - Destacar os autores realista brasileiros: seu período de vida, suas principais obras e um pouco do seu estilo de escrita.
 
 ## Tecnologias Utilizadas
-- Html + CSS + JavaScript
-- Git + GitHub
-- Deepseek (utilizada para extrair informações sobre a literatura realista e naturalista brasileira)
+<img src="https://github.com/user-attachments/assets/f48f29b7-f7c8-4711-8605-1a2ef78be848" width="40" height="40" /> <img src="https://github.com/user-attachments/assets/d3c8bacd-fd38-4289-b576-faead844934e" width="40" height="40" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="40" height="40" /> <img src="https://github.com/user-attachments/assets/7a04f990-c690-4e00-a1a0-e784ec969754" width="40" height="40" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-plain.svg" width="40" height="40" /> <img src="https://github.com/user-attachments/assets/5b7c3f4b-fb53-4b06-a667-0c979bfee0b1" width="70" height="70" />
 
 ## Pré-requisitos
 - Java toolkit
